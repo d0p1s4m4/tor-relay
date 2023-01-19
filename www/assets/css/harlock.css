@@ -1,0 +1,87 @@
+body {
+  background-color: #1C1C1C;
+  color: #6C6C6C;
+}
+
+header {
+  padding-left: 15px;
+}
+
+article {
+  position: relative;
+  width: 60%;
+  background: #DDDDDD;
+  border-radius: 4px;
+  padding: 2em 1.5em;
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 0 1px 0 #FFFFFF;
+  line-height: 1.5;
+  margin: 60px auto;
+}
+
+article:before, article:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.7);
+  -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+
+article:after {
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+aside {
+  float: left;
+  padding: 0 10px 0 0;
+}
+
+aside.right {
+  float: right;
+}
+
+a {
+  color: #31B5BB;
+}
+
+.captain {
+  width: 400px;
+  height: auto;
+
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.captain:hover {
+  opacity: 0.3;
+  filter: alpha(opacity=30); /* For IE8 and earlier */
+}
+
+@media (max-width: 767px) {
+  .captain {
+    display: none;
+  }
+}
+
+pre {
+  overflow: scroll;
+}
