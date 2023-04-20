@@ -35,8 +35,8 @@ let show_load_average_statistics = () => {
 							borderColor: "#bb31b5"
 						},
 						{
-							label: "10 minutes",
-							data: data.data.map(x => ({ x: x.date, y: x.load_10 })),
+							label: "15 minutes",
+							data: data.data.map(x => ({ x: x.date, y: x.load_15 })),
 							borderColor: "#b5bb31"
 						}
 					]
