@@ -1,0 +1,15 @@
+ORPort 9001
+
+Address harlock.tor.d0p1.eu
+
+Nickname Harlock
+
+ContactInfo <tor[AT]d0p1[dot]eu> - 
+
+DirPort 9030
+
+ExitPolicy reject *:*
+ExitPolicy reject6 *:*
+
+ExitRelay 0
+SocksPort 0
