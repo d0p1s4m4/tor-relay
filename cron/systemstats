@@ -1,4 +1,39 @@
 #!/usr/bin/env python3
+import json
+import time
+import argparse
 
-if __name__ == '__main__':
-    pass
+AVG_FILE = "/proc/loadavg"
+NET_FILE = "/proc/net/dev"
+
+def get_avg():
+    avg = []
+    with open(AVG_FILE, "r") as f:
+        avg = f.read().strip().split(" ")
+    # (1min, 5min, 15min)
+    return (avg[0], avg[1], avg[2])
+
+def get_in_out():
+    with open(NET_FILE, "r") as f:
+        i = 0
+        for line in f:
+            i += 1
+            if i <= 2:
+                continue
+            data = line.strip().split()
+            iface = data[0][:-1]
+            if iface == "lo":
+                continue
+            return (iface, int(data[1]), int(data[9]))
+
+
+def get_kbits():
+    before = get_in_out()
+    time.sleep(1)
+    after = get_in_out()
+    # (iface, in, out)
+    return (before[0], (after[1] - before[1]) / 125, -((after[2] - before[2]) / 125))        
+
+if __name__ == "__main__":
+    print(get_avg())
+    print(get_kbits())
