@@ -1,10 +1,10 @@
 ORPort 9001
 
-Address harlock.tor.d0p1.eu
+Address {NodeSubDomain}.tor.d0p1.eu
 
-Nickname Harlock
+Nickname {NodeName}
 
-ContactInfo <tor[AT]d0p1[dot]eu> - 
+ContactInfo <tor[AT]d0p1[dot]eu> - bc1qhpxa0hgj0mjstttkjgg6ees9dj5kadty04kgpp
 
 DirPort 9030
 
