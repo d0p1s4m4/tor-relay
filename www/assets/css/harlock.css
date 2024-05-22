@@ -86,3 +86,40 @@ a {
 pre {
   overflow: scroll;
 }
+
+
+#bitcoin {
+  background: url("../img/coin/bitcoin.png") no-repeat left transparent;
+  background-size: contain;
+  padding-left: 35px;
+}
+
+#monero {
+  background: url("../img/coin/monero.png") no-repeat left transparent;
+  background-size: contain;
+  padding-left: 35px;
+}
+
+#zcash {
+  background: url("../img/coin/zcash.png") no-repeat left transparent;
+  background-size: contain;
+  padding-left: 35px;
+}
+
+.loader {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 16px solid #DDDDDD; /* Light grey */
+  border-top: 16px solid #31B5BB; /* Blue */
+  border-bottom: 16px solid #31B5BB;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

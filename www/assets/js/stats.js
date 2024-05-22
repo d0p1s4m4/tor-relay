@@ -2,6 +2,8 @@ const graph_error_elem = document.getElementById("graph-error");
 const network_traffic_elem = document.getElementById("network-traffic");
 const load_average_elem = document.getElementById("load-average");
 const tor_version_elem = document.getElementById("version");
+const load_average_loader_elem = document.getElementById("load-average-loader");
+const network_traffic_loader_elem = document.getElementById("network-traffic-loader");
 
 let show_sys_info = () => {
 	fetch('/assets/json/sys.json')
@@ -51,11 +53,14 @@ let show_load_average_statistics = () => {
 				}
 			};
 
+			load_average_loader_elem.remove();
+
 			new Chart(load_average_elem, config);
 		})
 		.catch((err) => {
 			graph_error_elem.textContent = "Failed to fetch data";
-			load_average_elem.style.display = "none";
+			load_average_elem.remove();
+			load_average_loader_elem.remove();
 
 			console.error(err);
 		});
@@ -106,11 +111,14 @@ let show_network_statistics = () => {
 				}
 			};
 
+			network_traffic_loader_elem.remove();
+
 			new Chart(network_traffic_elem, config);
 		})
 		.catch((err) => {
 			graph_error_elem.textContent = "Failed to fetch data";
-			network_traffic_elem.style.display = "none";
+			network_traffic_elem.remove();
+			network_traffic_loader_elem.remove();
 			console.error(err);
 		})
 }
