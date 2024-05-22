@@ -14,3 +14,8 @@ install:
 
 	@for item in $$(find www/assets -type d) ; do install $${item} -d ${DESTDIR}/var/www/html/$${item#www/} ; done
 	@for item in $$(find www/assets -type f) ; do install $${item} ${DESTDIR}/var/www/html/$${item#www/} ; done
+
+	install -D -m +x bin/systemstats ${DESTDIR}/usr/bin/systemstats
+
+	echo "*/10 * * * * /usr/bin/systemstats" >> ${DESTDIR}/etc/crontab
+	
