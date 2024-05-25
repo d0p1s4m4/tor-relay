@@ -17,5 +17,5 @@ install:
 
 	install -D -m +x bin/systemstats ${DESTDIR}/usr/bin/systemstats
 
-	echo "*/15 * * * * ${DESTDIR}/usr/bin/systemstats --load ${DESTDIR}/var/www/html/assets/json/loads.json" >> ${DESTDIR}/etc/crontab
-	echo "*/10 * * * * ${DESTDIR}/usr/bin/systemstats --network ${DESTDIR}/var/www/html/assets/json/network.json" >> ${DESTDIR}/etc/crontab
+	echo "*/15 *  * * *  root ${DESTDIR}/usr/bin/systemstats --load ${DESTDIR}/var/www/html/assets/json/loads.json" >> ${DESTDIR}/etc/crontab
+	echo "*/10 *  * * *  root ${DESTDIR}/usr/bin/systemstats --network ${DESTDIR}/var/www/html/assets/json/network.json" >> ${DESTDIR}/etc/crontab
