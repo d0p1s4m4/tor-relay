@@ -2,6 +2,8 @@
 import json
 import time
 import argparse
+import os
+from datetime import datetime
 
 AVG_FILE = "/proc/loadavg"
 NET_FILE = "/proc/net/dev"
@@ -35,5 +37,38 @@ def get_kbits():
     return (before[0], (after[1] - before[1]) / 125, -((after[2] - before[2]) / 125))        
 
 if __name__ == "__main__":
-    print(get_avg())
-    print(get_kbits())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-n", "--network")
+    parser.add_argument("-l", "--load")
+    parser.add_argument("--clean")
+
+    args = parser.parse_args()
+    net_data = None
+    if args.network:
+        net_data = {"data": []}
+        if os.path.isfile(args.network):
+            with open(args.network, "r") as f:
+                net_data = json.load(f)
+        kbits = get_kbits()
+        net_data["iface"] = kbits[0]
+        net_data["data"].append({
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "in": kbits[1],
+            "out": kbits[2]
+        })
+        with open(args.network, "w") as f:
+            json.dump(net_data, f)
+    if args.load:
+        load_data = {"data": []}
+        if os.path.isfile(args.load):
+            with open(args.load, "r") as f:
+                load_data = json.load(f)
+        avg = get_avg()
+        load_data["data"].append({
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "load_1": avg[0],
+            "load_5": avg[1],
+            "load_15": avg[2]
+        })
+        with open(args.load, "w") as f:
+            json.dump(load_data, f)
